@@ -252,30 +252,172 @@
       margin-bottom: 15px;
     }
 
-    /* LOCALES */
+/* LOCALES */
 
-    .locations {
-      background: white;
-    }
+.locations {
+  background: white;
+}
 
-    .location-placeholder {
-      max-width: 780px;
-      margin: auto;
-      padding: 45px;
-      text-align: center;
-      background: #f6faf8;
-      border: 2px dashed #b7cfc3;
-      border-radius: 18px;
-    }
+.district-group {
+  margin-top: 55px;
+}
 
-    .location-placeholder h3 {
-      margin-bottom: 10px;
-      font-size: 24px;
-    }
+.district-group:first-of-type {
+  margin-top: 35px;
+}
 
-    .location-placeholder p {
-      color: #697a73;
-    }
+.district-title {
+  font-size: 27px;
+  color: #5b1105;
+  margin-bottom: 22px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0d7c7;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.location-card {
+  background: #fffaf5;
+  border: 1px solid #eadbd2;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(91, 17, 5, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.location-card-top {
+  border-bottom: 1px solid #eadbd2;
+  padding-bottom: 13px;
+}
+
+.location-district {
+  display: inline-block;
+  color: #c83a0a;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.location-card h4 {
+  color: #5b1105;
+  font-size: 22px;
+  margin: 0;
+}
+
+.location-address,
+.location-reference {
+  color: #4f4742;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.location-reference {
+  color: #716660;
+}
+
+.location-hours {
+  background: white;
+  border: 1px solid #eadbd2;
+  border-radius: 9px;
+  padding: 11px 13px;
+}
+
+.location-hours summary {
+  cursor: pointer;
+  color: #c83a0a;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.hours-list {
+  padding-top: 10px;
+}
+
+.hours-list p {
+  font-size: 13px;
+  margin: 5px 0;
+  color: #514842;
+}
+
+.location-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.location-services span {
+  background: #fff0e5;
+  color: #8f1f08;
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.location-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: auto;
+}
+
+.location-btn {
+  padding: 10px 8px;
+  border-radius: 7px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.location-btn:hover {
+  transform: translateY(-2px);
+}
+
+.location-btn-map {
+  background: #c83a0a;
+  color: white;
+  grid-column: 1 / -1;
+}
+
+.location-btn-whatsapp {
+  background: #168c4b;
+  color: white;
+}
+
+.location-btn-call {
+  background: #5b1105;
+  color: white;
+}
+
+@media (max-width: 1000px) {
+  .locations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .locations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .district-title {
+    font-size: 23px;
+  }
+
+  .location-card {
+    padding: 20px;
+  }
+}
 
     /* CONTACTO */
 
@@ -474,27 +616,526 @@
   </section>
 
 
-  <section class="locations" id="locales">
-    <div class="container">
-
-      <div class="section-title">
-        <span>Nuestros establecimientos</span>
-        <h2>Encuentra tu Botica del Dr. Juan</h2>
-        <p>
-          Estamos preparando el directorio completo de nuestros locales.
-        </p>
-      </div>
-
-      <div class="location-placeholder">
-        <h3>📍 Directorio de locales</h3>
-        <p>
-          Próximamente aquí aparecerán las direcciones,
-          horarios, teléfonos y mapas de cada establecimiento.
-        </p>
-      </div>
-
+<section class="locations" id="locales">
+  <div class="container">
+    <div class="section-title">
+      <span>Nuestros establecimientos</span>
+      <h2>Encuentra tu Botica del Dr. Juan</h2>
+      <p>Conoce nuestros 18 locales vigentes, sus horarios y cómo llegar.</p>
     </div>
-  </section>
+
+    <div class="district-group" id="ancon">
+      <h3 class="district-title">Ancón</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Ancón</span>
+            <h4>ANCON</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV MARGINAL MZ L LT 17. COOP VIRGEN DEL ROSARIO</p>
+          <p class="location-reference"><strong>Referencia:</strong> ZONA CENTRO DE ANCON</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/ehTqZcDrwQJQXk3w5" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51924775846" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51924775846">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="district-group" id="callao">
+      <h3 class="district-title">Callao</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Callao</span>
+            <h4>CALLAO 1</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. EL OLIVAR 202. URB. EL CONDOR</p>
+          <p class="location-reference"><strong>Referencia:</strong> ESQUINA AV EL OLIVAR CON JR CODORNICES CDRA 2</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/iB5yVajXVY4n728M6" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51933615567" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51933615567">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Callao</span>
+            <h4>CALLAO 2</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. EL OLIVAR 592. URB. EL CONDOR</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE AV EL OLIVAR CON AV LOS DOMINICOS</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/pWjc1ACDzuFpwxUR6" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51902755731" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51902755731">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="district-group" id="carabayllo">
+      <h3 class="district-title">Carabayllo</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Carabayllo</span>
+            <h4>CARABAYLLO</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. TUPAC AMARU 3033. P.J. EL PROGRESO</p>
+          <p class="location-reference"><strong>Referencia:</strong> MERCADO LA CUMBRE</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/VDHx22NHAQ9Wjr156" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51936552249" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51936552249">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="district-group" id="comas">
+      <h3 class="district-title">Comas</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 1</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. SAN FELIPE 762. URB. SAN FELIPE 2DA ETAPA</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE AV SAN FELIPE CON AV UNIVERSITARIA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/8FM5sMQpEGCXbwKj8" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51970588915" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51970588915">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 2</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. TUPAC AMARU 3004. URB REPARTICION</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE DE AV TUPAC AMARU CON AV BELAUNDE ESTE</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/MrN1Bt4z3daEfP9M6" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51990993270" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51990993270">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 3</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. REVOLUCION 1413. LOCALIDAD COLLIQUE 3ERA ZONA</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE DE AV REVOLUCION CON AV JULIO C TELLO, MERCADO COLLIQUE 3ERA ZONA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/t2RXK7bg8YPfKcAQA" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51938262101" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51938262101">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 4</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> JR. SAN MARTIN DE PORRES 105. URB. LA MERCED</p>
+          <p class="location-reference"><strong>Referencia:</strong> ESQUINA JR SAN MARTIN DE PORRES CON AV TUPAC AMARU N° 200</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 7:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 7:00 PM</p>
+              <p><strong>Domingo:</strong> CERRADO</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/tqpHaxLPNTzQFrQq6" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51933606371" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51933606371">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 6</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. GUILLERMO DE LA FUENTE 269. URB. SANTA LUZMILA</p>
+          <p class="location-reference"><strong>Referencia:</strong> FRENTE AL CENTRO DE SALUD SANTA LUZMILA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/Gk3Yj3vsjGDbnVcm9" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51974113521" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51974113521">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 8</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV TUPAC AMARU 3010, MZ L LT 25. URB REPARTICION</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE DE AV TUPAC AMARU CON AV BELAUNDE OESTE</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/DSbaeyz9onW4X28j7" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51936515666" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51936515666">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Comas</span>
+            <h4>COMAS 9</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> CALLE 23 N° 105. URB CARABAYLLO</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE DE CALLE 23 CON AV TUPAC AMARU CDRA 38</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/gsjT2QHL8syRMUFcA" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51977572675" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51977572675">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="district-group" id="los-olivos">
+      <h3 class="district-title">Los Olivos</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Los Olivos</span>
+            <h4>OLIVOS 1</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV. ANGELICA GAMARRA 1902. AA.HH. 5 ESTRELLAS</p>
+          <p class="location-reference"><strong>Referencia:</strong> CRUCE DE AV ANGELICA GAMARRA CON AV UNIVERSITARIA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/6WZxcgFou4zL7k647" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51977551182" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51977551182">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Los Olivos</span>
+            <h4>OLIVOS 2</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV CENTRAL 301-303. URB. SANTA LUISA ETAPA 2</p>
+          <p class="location-reference"><strong>Referencia:</strong> ESQUINA DE AV CENTRAL CON AV SANTA ELVIRA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/dZH65J6yicsgwaPT9" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51902732622" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51902732622">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="district-group" id="puente-piedra">
+      <h3 class="district-title">Puente Piedra</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Puente Piedra</span>
+            <h4>PUENTE 1</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> CALLE SANTA LUCIA Mz C Lote 2. URB SANTO DOMINGO</p>
+          <p class="location-reference"><strong>Referencia:</strong> FRENTE AL BANCO DE LA NACION DE  PUENTE PIEDRA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/NPgf43utSHsK1tLcA" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51919443714" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51919443714">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Puente Piedra</span>
+            <h4>PUENTE 2</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> JR. RODRIGUEZ SARMIENTO 175 -B.</p>
+          <p class="location-reference"><strong>Referencia:</strong> ESQUINA JR RODRIGUEZ SARMIENTO CON CALLE MARIANO MELGAR CDRA 1. Emergencia del hospital de puente piedra</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/Dy77fVNNAfjuWSeCA" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51936177513" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51936177513">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Puente Piedra</span>
+            <h4>PUENTE 3</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV SAN LORENZO 290. ASOC. DE PROPIETARIOS OVALO DE PUENTE PIEDRA</p>
+          <p class="location-reference"><strong>Referencia:</strong> COSTADO MERCADO HUAMANTANGA PUENTE PIEDRA</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/MGos8rL3U9FUkT2j9" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51936177581" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51936177581">Llamar</a>
+          </div>
+        </article>
+
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">Puente Piedra</span>
+            <h4>PUENTE 4</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> PROLONGACION BUENOS AIRES 2319 (MZ L LT 02) ASOC. POBLADORES MICAELA BASTIDAS</p>
+          <p class="location-reference"><strong>Referencia:</strong> OVALO DE ZAPALLAL. COSTADO DE CLINICA MONTELUZ</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/eesGkURHstY6LNiS6" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51955013994" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51955013994">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="district-group" id="san-martin-de-porres">
+      <h3 class="district-title">San Martín de Porres</h3>
+      <div class="locations-grid">
+        <article class="location-card">
+          <div class="location-card-top">
+            <span class="location-district">San Martín de Porres</span>
+            <h4>SMP 1</h4>
+          </div>
+          <p class="location-address"><strong>Dirección:</strong> AV LOS PROCERES 8023 (MZ B-6 SUBLOTE 1-A). URB PRO INDUSTRIAL SEXTO SECTOR</p>
+          <p class="location-reference"><strong>Referencia:</strong> COSTADO MERCADO UNICACHI DE LOS OLIVOS</p>
+          <details class="location-hours">
+            <summary>Ver horarios</summary>
+            <div class="hours-list">
+              <p><strong>Lun–Vie:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Sábado:</strong> DE 7:00 AM A 11:00 PM</p>
+              <p><strong>Domingo:</strong> DE 8:00 AM A 10:00 PM</p>
+            </div>
+          </details>
+          <div class="location-services">
+            <span>Delivery</span>
+            <span>Recojo en tienda</span>
+          </div>
+          <div class="location-actions">
+            <a class="location-btn location-btn-map" href="https://maps.app.goo.gl/Y6BTVegAhNotok3r8" target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="location-btn location-btn-whatsapp" href="https://wa.me/51977538006" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="location-btn location-btn-call" href="tel:+51977538006">Llamar</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
   <section class="contact" id="contacto">
