@@ -525,12 +525,6 @@
   }
 }
 
-    /* Cuando un local está abierto, ocultar los demás del mismo distrito */
-.district-locations:has(.location-accordion[open])
-.location-accordion:not([open]) {
-  display: none;
-}
-
     /* CONTACTO */
 
     .contact {
@@ -1367,6 +1361,23 @@
       }
     });
   });
+
+const locations = document.querySelectorAll('.location-accordion');
+
+locations.forEach(location => {
+  location.addEventListener('toggle', () => {
+    if (location.open) {
+      const group = location.closest('.district-locations');
+
+      group.querySelectorAll('.location-accordion').forEach(otherLocation => {
+        if (otherLocation !== location) {
+          otherLocation.open = false;
+        }
+      });
+    }
+  });
+});
+  
 </script>
   
 </body>
