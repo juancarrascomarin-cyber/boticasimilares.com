@@ -211,6 +211,135 @@
       color: #697a73;
     }
 
+/* SERVICIOS */
+
+#servicios {
+  background: #fffaf5;
+  padding: 75px 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid #eadbd2;
+  border-radius: 18px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  box-shadow: 0 10px 28px rgba(91,17,5,0.06);
+  transition: 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(91,17,5,0.10);
+}
+
+.service-card .card-icon {
+  font-size: 36px;
+  margin-bottom: 17px;
+}
+
+.service-card h3 {
+  color: #5b1105;
+  font-size: 21px;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: #625752;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Destacar Preparados Magistrales */
+
+.service-card-featured {
+  border: 2px solid #d33a0a;
+  background: #fff7f2;
+}
+
+.service-card-featured h3 {
+  color: #c43208;
+}
+
+/* Texto especial de orientación de receta */
+
+.service-highlight {
+  background: #fff1e8;
+  border-left: 4px solid #d33a0a;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.service-small {
+  font-size: 12px !important;
+  color: #716660 !important;
+}
+
+/* BOTONES */
+
+.service-button {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+  padding: 13px 14px;
+  border-radius: 9px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  transition: 0.2s;
+}
+
+.service-button:hover {
+  transform: translateY(-2px);
+}
+
+.service-button-primary {
+  background: #d33a0a;
+  color: white;
+}
+
+.service-button-secondary {
+  background: #5b1105;
+  color: white;
+}
+
+/* SERVICIOS - TABLET */
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* SERVICIOS - CELULAR */
+
+@media (max-width: 600px) {
+  #servicios {
+    padding: 55px 0;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: auto;
+    padding: 22px;
+  }
+}
+    
     /* NOSOTROS */
 
     .about {
@@ -774,49 +903,138 @@
 
 
   <section id="servicios">
-    <div class="container">
+  <div class="container">
 
-      <div class="section-title">
-        <span>Estamos cerca de ti</span>
-        <h2>Una botica pensada para tu familia</h2>
-        <p>
-          Estamos preparando una experiencia digital que te permitirá
-          encontrar nuestros locales, servicios y novedades fácilmente.
-        </p>
-      </div>
-
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-icon">💊</div>
-          <h3>Productos farmacéuticos</h3>
-          <p>
-            Encuentra los productos que necesitas con atención
-            cercana y responsable.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">📍</div>
-          <h3>Locales cercanos</h3>
-          <p>
-            Próximamente podrás consultar rápidamente nuestros
-            establecimientos y cómo llegar.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">💬</div>
-          <h3>Atención directa</h3>
-          <p>
-            Incorporaremos canales digitales para facilitar
-            la comunicación con nuestros clientes.
-          </p>
-        </div>
-
-      </div>
+    <div class="section-title">
+      <span>Servicios pensados para ti</span>
+      <h2>¿Cómo podemos ayudarte?</h2>
+      <p>
+        En Boticas del Dr. Juan queremos ayudarte a acceder a tus medicamentos
+        y comprender mejor su uso.
+      </p>
     </div>
-  </section>
+
+    <div class="cards services-grid">
+
+      <!-- 1. COTIZA TU RECETA -->
+      <div class="card service-card">
+        <div class="card-icon">📋</div>
+        <h3>Cotiza tu receta con nosotros</h3>
+        <p>
+          Envíanos tu receta, consulta disponibilidad y precios de tus
+          medicamentos y coordina tu pedido con nosotros.
+        </p>
+
+        <a
+          href="https://wa.me/51990993246"
+          target="_blank"
+          rel="noopener"
+          class="service-button service-button-primary">
+          Cotizar mi receta
+        </a>
+      </div>
+
+      <!-- 2. PREPARADOS MAGISTRALES -->
+      <div class="card service-card service-card-featured">
+        <div class="card-icon">⚗️</div>
+        <h3>PREPARADOS MAGISTRALES</h3>
+        <p>
+          Consulta con nosotros la disponibilidad y gestión de tu fórmula
+          magistral de acuerdo con la prescripción médica.
+        </p>
+
+        <a
+          href="https://wa.me/51990993246"
+          target="_blank"
+          rel="noopener"
+          class="service-button service-button-primary">
+          Consultar preparados magistrales
+        </a>
+      </div>
+
+      <!-- 3. RECOJO EN TIENDA -->
+      <div class="card service-card">
+        <div class="card-icon">🛍️</div>
+        <h3>Recojo en tienda</h3>
+        <p>
+          Consulta disponibilidad y coordina el recojo de tus productos en la
+          Botica del Dr. Juan que elijas.
+        </p>
+
+        <a
+          href="#locales"
+          class="service-button service-button-secondary">
+          Elegir una botica
+        </a>
+      </div>
+
+      <!-- 4. ORIENTACIÓN VIRTUAL -->
+      <div class="card service-card">
+        <div class="card-icon">💬</div>
+        <h3>Orientación virtual de tu receta</h3>
+
+        <p>
+          ¿Tienes dudas sobre lo que indica tu receta? Te ayudamos a comprender
+          los medicamentos prescritos, sus horarios, forma de uso, frecuencia,
+          duración e indicaciones importantes.
+        </p>
+
+        <p class="service-highlight">
+          <strong>¿No entiendes la letra de tu receta?</strong>
+          Podemos orientarte cuando una receta manuscrita resulte difícil de
+          leer o comprender.
+        </p>
+
+        <p class="service-small">
+          También puedes consultar sobre uso correcto de medicamentos,
+          interacciones y posibles reacciones adversas. Si una indicación no
+          puede identificarse con seguridad, deberá confirmarse con el médico;
+          nunca se interpretará por aproximación.
+        </p>
+
+        <a
+          href="#locales"
+          class="service-button service-button-secondary">
+          Consultar mi receta
+        </a>
+      </div>
+
+      <!-- 5. MEDICAMENTOS DE CASA -->
+      <div class="card service-card">
+        <div class="card-icon">🏠</div>
+        <h3>Revisa con nosotros tus medicamentos de casa</h3>
+        <p>
+          Te orientamos sobre fechas de vencimiento, conservación, organización
+          y posibles duplicidades de los medicamentos que mantienes en tu hogar.
+        </p>
+
+        <a
+          href="#locales"
+          class="service-button service-button-secondary">
+          Revisar mis medicamentos
+        </a>
+      </div>
+
+      <!-- 6. ENCUENTRA TU BOTICA -->
+      <div class="card service-card">
+        <div class="card-icon">📍</div>
+        <h3>Encuentra tu Botica del Dr. Juan</h3>
+        <p>
+          Consulta nuestros establecimientos, direcciones, horarios, WhatsApp,
+          teléfono y cómo llegar.
+        </p>
+
+        <a
+          href="#locales"
+          class="service-button service-button-secondary">
+          Ver nuestros locales
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 
   <section class="about" id="nosotros">
