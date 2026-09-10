@@ -525,29 +525,158 @@
   }
 }
 
-    /* CONTACTO */
+   /* CONTACTO */
 
-    .contact {
-      background: #5b1105;
-      color: white;
-    }
+.contact {
+  background: linear-gradient(135deg, #5b1105, #8f1f08);
+  color: white;
+  padding: 75px 0 55px;
+}
 
-    .contact-box {
-      text-align: center;
-      max-width: 760px;
-      margin: auto;
-    }
+.contact-heading {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 40px;
+}
 
-    .contact h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
+.contact-heading span {
+  display: block;
+  color: #ffd6c8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
 
-    .contact p {
-      color: #dcebe5;
-      margin-bottom: 30px;
-    }
+.contact-heading h2 {
+  font-size: 40px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  color: white;
+}
 
+.contact-heading p {
+  color: #f6ddd6;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: white;
+  color: #2b211d;
+  border-radius: 18px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 310px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+.contact-icon {
+  font-size: 34px;
+  margin-bottom: 18px;
+}
+
+.contact-card h3 {
+  color: #5b1105;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.contact-card p {
+  color: #665954;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.contact-button {
+  display: block;
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 9px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  transition: 0.2s;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+}
+
+.contact-button-whatsapp {
+  background: #169c4b;
+  color: white;
+}
+
+.contact-button-primary {
+  background: #d33a0a;
+  color: white;
+}
+
+.contact-button-secondary {
+  background: #5b1105;
+  color: white;
+}
+
+.contact-note {
+  margin: 35px auto 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #f6ddd6;
+}
+
+.contact-note strong {
+  color: white;
+}
+
+/* CONTACTO - TABLET */
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .contact-card {
+    min-height: auto;
+  }
+}
+
+/* CONTACTO - CELULAR */
+
+@media (max-width: 520px) {
+  .contact {
+    padding: 55px 0 40px;
+  }
+
+  .contact-heading h2 {
+    font-size: 31px;
+  }
+
+  .contact-heading p {
+    font-size: 14px;
+  }
+
+  .contact-card {
+    padding: 22px;
+  }
+}
     /* PIE */
 
     footer {
@@ -1321,23 +1450,67 @@
 </section>
   
   <section class="contact" id="contacto">
-    <div class="container">
-      <div class="contact-box">
+  <div class="container">
 
-        <h2>Estamos para ayudarte</h2>
-
-        <p>
-          Muy pronto incorporaremos nuestros canales de contacto,
-          WhatsApp y atención de cada establecimiento.
-        </p>
-
-        <a href="#inicio" class="btn btn-primary">
-          Volver al inicio
-        </a>
-
-      </div>
+    <div class="contact-heading">
+      <span>ESTAMOS PARA AYUDARTE</span>
+      <h2>¿Cómo podemos ayudarte?</h2>
+      <p>
+        Elige la opción que necesitas y comunícate con Boticas del Dr. Juan.
+      </p>
     </div>
-  </section>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+        <div class="contact-icon">🛵</div>
+        <h3>Delivery</h3>
+        <p>
+          Consulta productos y coordina tu pedido directamente con nuestro
+          servicio de delivery.
+        </p>
+        <a
+          href="https://wa.me/51990993246"
+          target="_blank"
+          rel="noopener"
+          class="contact-button contact-button-whatsapp">
+          Pedir por WhatsApp
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>Encuentra una botica</h3>
+        <p>
+          Consulta nuestros establecimientos, direcciones, horarios y cómo
+          llegar.
+        </p>
+        <a href="#locales" class="contact-button contact-button-primary">
+          Ver locales
+        </a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <h3>Atención de tu local</h3>
+        <p>
+          Selecciona tu distrito y establecimiento para comunicarte por
+          WhatsApp o teléfono directamente con la botica.
+        </p>
+        <a href="#locales" class="contact-button contact-button-secondary">
+          Elegir establecimiento
+        </a>
+      </div>
+
+    </div>
+
+    <div class="contact-note">
+      <strong>Boticas del Dr. Juan</strong>
+      <span>Tu salud, cerca de ti.</span>
+    </div>
+
+  </div>
+</section>
 
 </main>
 
