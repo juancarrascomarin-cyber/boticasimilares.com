@@ -525,6 +525,11 @@
   }
 }
 
+    /* Cuando un local está abierto, ocultar los demás del mismo distrito */
+.district-locations:has(.location-accordion[open])
+.location-accordion:not([open]) {
+  display: none;
+}
 
     /* CONTACTO */
 
@@ -1343,9 +1348,26 @@
 </main>
 
 
+
 <footer>
   © 2026 Boticas del Dr. Juan · Todos los derechos reservados
 </footer>
 
+<script>
+  const districts = document.querySelectorAll('.district-accordion');
+
+  districts.forEach(district => {
+    district.addEventListener('toggle', () => {
+      if (district.open) {
+        districts.forEach(otherDistrict => {
+          if (otherDistrict !== district) {
+            otherDistrict.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>
+  
 </body>
 </html>
