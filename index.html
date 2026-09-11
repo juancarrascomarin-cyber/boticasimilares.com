@@ -843,7 +843,351 @@
         padding: 65px 0;
       }
     }
-  
+
+/* NUEVA PORTADA - DR. JUAN TE ACOMPAÑA */
+
+.hero {
+  min-height: auto;
+  padding: 65px 0 50px;
+  background: linear-gradient(
+    135deg,
+    #fffaf5 0%,
+    #fff3ea 100%
+  );
+  color: #2b211e;
+}
+
+.hero-new {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) minmax(500px, 1.15fr);
+  gap: 38px 48px;
+  align-items: start;
+}
+
+
+/* MENSAJE PRINCIPAL */
+
+.hero-intro {
+  padding: 25px 0;
+}
+
+.hero-intro .hero-small {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  margin-bottom: 20px;
+
+  background: white;
+  border: 1px solid #eac5b5;
+  border-radius: 999px;
+
+  color: #b3320d;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hero-intro h1 {
+  margin: 0 0 22px;
+
+  color: #651709;
+  font-size: clamp(50px, 5vw, 74px);
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.hero-intro-text {
+  max-width: 510px;
+  margin: 0;
+
+  color: #4f403b;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+
+/* CAJA ¿EN QUÉ PODEMOS AYUDARTE? */
+
+.hero-help {
+  padding: 30px;
+
+  background: white;
+  border: 1px solid #ead7cd;
+  border-radius: 22px;
+
+  box-shadow: 0 15px 40px rgba(91, 17, 5, 0.08);
+}
+
+.hero-help h2 {
+  margin: 0 0 8px;
+
+  color: #651709;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.hero-help-intro {
+  margin: 0 0 22px;
+
+  color: #655853;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+
+/* 4 GRANDES OPCIONES */
+
+.hero-help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.hero-help-card {
+  min-height: 125px;
+  padding: 18px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+
+  background: #fffaf6;
+  border: 2px solid #efded5;
+  border-radius: 16px;
+
+  color: #2b211e;
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.hero-help-card:hover {
+  border-color: #d33a0a;
+  background: #fff4ed;
+  transform: translateY(-2px);
+}
+
+.hero-help-primary {
+  border-color: #d33a0a;
+  background: #fff1e8;
+}
+
+.hero-help-icon {
+  font-size: 32px;
+}
+
+.hero-help-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-help-content strong {
+  color: #651709;
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.hero-help-content small {
+  color: #5e514c;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.hero-help-arrow {
+  color: #d33a0a;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+/* TRATAMIENTOS CONTINUOS */
+
+.hero-treatment {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+
+  padding: 25px 28px;
+
+  background: #681708;
+  border-radius: 20px;
+
+  color: white;
+  box-shadow: 0 12px 30px rgba(91, 17, 5, 0.12);
+}
+
+.hero-treatment-icon {
+  font-size: 38px;
+}
+
+.hero-treatment-text span {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #ffd9c8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hero-treatment-text h3 {
+  margin: 0 0 6px;
+
+  color: white;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.hero-treatment-text p {
+  margin: 0;
+
+  color: #fff4ef;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.hero-treatment-button {
+  min-height: 54px;
+  padding: 14px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  border-radius: 10px;
+
+  color: #651709;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  text-align: center;
+}
+
+.hero-treatment-button:hover {
+  background: #fff0e8;
+}
+
+
+/* MENSAJE DE FACILIDAD */
+
+.hero-easy {
+  grid-column: 1 / -1;
+
+  padding: 18px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  background: white;
+  border: 1px solid #ead7cd;
+  border-radius: 14px;
+
+  color: #51433e;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.hero-easy strong {
+  color: #651709;
+  font-size: 17px;
+}
+
+
+/* TABLET */
+
+@media (max-width: 950px) {
+
+  .hero-new {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero-intro {
+    padding-bottom: 0;
+  }
+
+  .hero-intro-text {
+    max-width: 650px;
+  }
+}
+
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+
+  .hero {
+    padding: 38px 0 35px;
+  }
+
+  .hero-intro h1 {
+    font-size: 46px;
+  }
+
+  .hero-intro-text {
+    font-size: 18px;
+  }
+
+  .hero-help {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .hero-help h2 {
+    font-size: 28px;
+  }
+
+  .hero-help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-help-card {
+    min-height: 105px;
+    padding: 16px;
+  }
+
+  .hero-help-content strong {
+    font-size: 18px;
+  }
+
+  .hero-help-content small {
+    font-size: 15px;
+  }
+
+  .hero-treatment {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+
+  .hero-treatment-icon {
+    font-size: 34px;
+  }
+
+  .hero-treatment-text h3 {
+    font-size: 24px;
+  }
+
+  .hero-treatment-button {
+    width: 100%;
+    min-height: 56px;
+  }
+
+  .hero-easy {
+    text-align: left;
+    justify-content: flex-start;
+  }
+}
+    
 /* ACCESIBILIDAD - CLIENTES MAYORES DE 50 AÑOS */
 
 /* Lectura general */
@@ -1064,11 +1408,15 @@ summary:focus-visible {
 <main>
 
   <section class="hero" id="inicio">
-    <div class="container">
-      <div class="hero-content">
+  <div class="container">
+
+    <div class="hero-new">
+
+      <!-- MENSAJE PRINCIPAL -->
+      <div class="hero-intro">
 
         <span class="hero-small">
-          Bienvenido a nuestra nueva web
+          BOTICAS DEL DR. JUAN
         </span>
 
         <h1>
@@ -1076,24 +1424,155 @@ summary:focus-visible {
           cerca de ti.
         </h1>
 
-        <p>
-          En Boticas del Dr. Juan trabajamos para brindarte
-          una atención cercana, accesible y confiable.
+        <p class="hero-intro-text">
+          Queremos hacer más fácil el cuidado de tu salud.
+          Cuéntanos qué necesitas y te ayudamos.
         </p>
 
-        <div class="buttons">
-          <a href="#locales" class="btn btn-primary">
-            Ver nuestros locales
+      </div>
+
+
+      <!-- PREGUNTA PRINCIPAL -->
+      <div class="hero-help">
+
+        <h2>¿En qué podemos ayudarte hoy?</h2>
+
+        <p class="hero-help-intro">
+          Elige una opción. No necesitas registrarte ni descargar ninguna aplicación.
+        </p>
+
+
+        <div class="hero-help-grid">
+
+          <!-- COTIZAR RECETA -->
+          <a
+            href="https://wa.me/51990993246?text=Hola%2C%20quiero%20cotizar%20mi%20receta"
+            target="_blank"
+            rel="noopener"
+            class="hero-help-card hero-help-primary"
+            aria-label="Cotizar mi receta por WhatsApp">
+
+            <span class="hero-help-icon">📋</span>
+
+            <span class="hero-help-content">
+              <strong>Cotizar mi receta</strong>
+              <small>
+                Envíanos una foto y consulta precios y disponibilidad.
+              </small>
+            </span>
+
+            <span class="hero-help-arrow">›</span>
           </a>
 
-          <a href="#nosotros" class="btn btn-secondary">
-            Conócenos
+
+          <!-- NO ENTIENDO MI RECETA -->
+          <a
+            href="https://wa.me/51990993247?text=Hola%2C%20necesito%20ayuda%20para%20comprender%20mi%20receta"
+            target="_blank"
+            rel="noopener"
+            class="hero-help-card"
+            aria-label="Solicitar orientación para comprender mi receta">
+
+            <span class="hero-help-icon">💬</span>
+
+            <span class="hero-help-content">
+              <strong>No entiendo mi receta</strong>
+              <small>
+                Te orientamos para comprender lo que pueda identificarse con seguridad.
+              </small>
+            </span>
+
+            <span class="hero-help-arrow">›</span>
           </a>
+
+
+          <!-- DUDAS SOBRE MEDICAMENTOS -->
+          <a
+            href="https://wa.me/51990993247?text=Hola%2C%20tengo%20dudas%20sobre%20mis%20medicamentos"
+            target="_blank"
+            rel="noopener"
+            class="hero-help-card"
+            aria-label="Consultar dudas sobre mis medicamentos">
+
+            <span class="hero-help-icon">💊</span>
+
+            <span class="hero-help-content">
+              <strong>Tengo dudas sobre mis medicamentos</strong>
+              <small>
+                Consulta sobre uso, horarios, conservación e interacciones.
+              </small>
+            </span>
+
+            <span class="hero-help-arrow">›</span>
+          </a>
+
+
+          <!-- ENCONTRAR BOTICA -->
+          <a
+            href="#locales"
+            class="hero-help-card"
+            aria-label="Encontrar una Botica del Dr. Juan">
+
+            <span class="hero-help-icon">📍</span>
+
+            <span class="hero-help-content">
+              <strong>Encontrar mi botica</strong>
+              <small>
+                Consulta dirección, horarios, WhatsApp y cómo llegar.
+              </small>
+            </span>
+
+            <span class="hero-help-arrow">›</span>
+          </a>
+
         </div>
 
       </div>
+
+
+      <!-- PACIENTES CON TRATAMIENTOS CONTINUOS -->
+      <div class="hero-treatment">
+
+        <div class="hero-treatment-icon">❤️</div>
+
+        <div class="hero-treatment-text">
+          <span>PARA QUIENES TOMAN MEDICAMENTOS TODOS LOS MESES</span>
+
+          <h3>¿Tienes un tratamiento continuo?</h3>
+
+          <p>
+            Podemos ayudarte a organizar tu próxima compra,
+            resolver tus dudas y facilitar la continuidad de tus medicamentos.
+          </p>
+        </div>
+
+        <a
+          href="https://wa.me/51990993247?text=Hola%2C%20tomo%20medicamentos%20todos%20los%20meses%20y%20quiero%20informaci%C3%B3n%20sobre%20el%20acompa%C3%B1amiento%20de%20mi%20tratamiento"
+          target="_blank"
+          rel="noopener"
+          class="hero-treatment-button">
+          Quiero que me orienten
+        </a>
+
+      </div>
+
+
+      <!-- MENSAJE DE CONFIANZA -->
+      <div class="hero-easy">
+
+        <strong>Queremos ponértelo fácil.</strong>
+
+        <span>
+          Puedes escribirnos por WhatsApp, enviarnos una foto de tu receta
+          o acercarte a cualquiera de nuestras boticas.
+        </span>
+
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
 
   <section id="servicios">
