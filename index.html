@@ -1894,6 +1894,312 @@
     margin-bottom: 5px;
   }
 }
+
+/* CONTACTO - CANALES DE ATENCION */
+
+.contact {
+  padding: 75px 0;
+  background: #fffaf6;
+  color: #332722;
+}
+
+.contact-new {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* CABECERA */
+
+.contact-choice-heading {
+  max-width: 760px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.contact-choice-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+
+  color: #c93409;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.contact-choice-heading h2 {
+  margin: 0 0 14px;
+
+  color: #651709;
+  font-size: clamp(34px, 4vw, 46px);
+  line-height: 1.15;
+}
+
+.contact-choice-heading p {
+  max-width: 680px;
+  margin: 0 auto;
+
+  color: #4d403b;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+
+/* OPCIONES */
+
+.contact-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.contact-choice-card {
+  min-height: 145px;
+  padding: 23px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+
+  background: white;
+  border: 2px solid #ead7cd;
+  border-radius: 17px;
+
+  color: #332722;
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.contact-choice-card:hover {
+  border-color: #d83a0b;
+  background: #fff2e9;
+  transform: translateY(-2px);
+}
+
+.contact-choice-icon {
+  font-size: 38px;
+  line-height: 1;
+}
+
+.contact-choice-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-choice-text strong {
+  color: #651709;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.contact-choice-text small {
+  color: #51443f;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.contact-choice-arrow {
+  color: #d83a0b;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+
+/* COMPRAR O COTIZAR */
+
+.contact-choice-primary {
+  background: #fff0e6;
+  border-color: #d83a0b;
+}
+
+
+/* HABLAR CON PERSONA */
+
+.contact-choice-human {
+  background: #701b0b;
+  border-color: #701b0b;
+}
+
+.contact-choice-human strong,
+.contact-choice-human small,
+.contact-choice-human .contact-choice-arrow {
+  color: white;
+}
+
+.contact-choice-human:hover {
+  background: #5d1407;
+  border-color: #5d1407;
+}
+
+
+/* FOTO, AUDIO O MENSAJE */
+
+.contact-choice-easy {
+  margin-top: 26px;
+  padding: 24px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+
+  background: white;
+  border: 1px solid #ead7cd;
+  border-radius: 17px;
+}
+
+.contact-choice-easy-icon {
+  font-size: 40px;
+}
+
+.contact-choice-easy strong {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #651709;
+  font-size: 20px;
+}
+
+.contact-choice-easy p {
+  margin: 0;
+
+  color: #4d403b;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+
+/* DOS CANALES PRINCIPALES */
+
+.contact-choice-channels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+
+  margin-top: 18px;
+}
+
+.contact-choice-channels > div {
+  padding: 20px;
+
+  background: #fff0e7;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.contact-choice-channels span {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #7a2a17;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.contact-choice-channels strong {
+  display: block;
+
+  color: #651709;
+  font-size: 20px;
+}
+
+
+/* CIERRE */
+
+.contact-choice-promise {
+  margin-top: 20px;
+  padding: 20px;
+
+  background: #701b0b;
+  border-radius: 15px;
+
+  color: white;
+  text-align: center;
+}
+
+.contact-choice-promise strong {
+  display: block;
+  margin-bottom: 4px;
+
+  color: white;
+  font-size: 19px;
+}
+
+.contact-choice-promise span {
+  color: white;
+  font-size: 16px;
+}
+
+
+/* TABLET */
+
+@media (max-width: 850px) {
+
+  .contact-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-choice-channels {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+  .contact {
+    padding: 55px 0;
+  }
+
+  .contact-choice-heading {
+    text-align: left;
+  }
+
+  .contact-choice-heading h2 {
+    font-size: 34px;
+  }
+
+  .contact-choice-heading p {
+    font-size: 17px;
+  }
+
+  .contact-choice-card {
+    min-height: 125px;
+    padding: 19px;
+  }
+
+  .contact-choice-text strong {
+    font-size: 19px;
+  }
+
+  .contact-choice-text small {
+    font-size: 16px;
+  }
+
+  .contact-choice-icon {
+    font-size: 34px;
+  }
+
+  .contact-choice-easy {
+    grid-template-columns: 1fr;
+    padding: 21px;
+  }
+
+  .contact-choice-channels > div {
+    padding: 18px;
+    text-align: left;
+  }
+
+  .contact-choice-channels strong {
+    font-size: 19px;
+  }
+}
     
 /* ACCESIBILIDAD - CLIENTES MAYORES DE 50 AÑOS */
 
@@ -3403,64 +3709,160 @@ summary:focus-visible {
   </div>
 </section>
   
-  <section class="contact" id="contacto">
+ <section class="contact" id="contacto">
   <div class="container">
 
-    <div class="contact-heading">
-      <span>ESTAMOS PARA AYUDARTE</span>
-      <h2>¿Cómo podemos ayudarte?</h2>
-      <p>
-        Elige la opción que necesitas y comunícate con BOTICAS DEL DR JUAN.
-      </p>
-    </div>
+    <div class="contact-new">
 
-    <div class="contact-grid">
+      <!-- CABECERA -->
+      <div class="contact-choice-heading">
 
-      <div class="contact-card">
-        <div class="contact-icon">🛵</div>
-        <h3>Delivery</h3>
+        <span class="contact-choice-eyebrow">
+          ESTAMOS PARA AYUDARTE
+        </span>
+
+        <h2>¿Con quién necesitas hablar?</h2>
+
         <p>
-          Consulta productos y coordina tu pedido directamente con nuestro
-          servicio de delivery.
+          Elige lo que necesitas y te llevamos directamente
+          al canal de BOTICAS DEL DR JUAN que puede ayudarte.
         </p>
+
+      </div>
+
+
+      <!-- OPCIONES -->
+      <div class="contact-choice-grid">
+
+        <!-- COMPRA / COTIZACION / DELIVERY -->
         <a
-          href="https://wa.me/51990993246"
+          href="https://wa.me/51990993246?text=Hola%2C%20quiero%20comprar%20o%20cotizar%20mis%20medicamentos"
           target="_blank"
           rel="noopener"
-          class="contact-button contact-button-whatsapp">
-          Pedir por WhatsApp
+          class="contact-choice-card contact-choice-primary">
+
+          <span class="contact-choice-icon">🛒</span>
+
+          <div class="contact-choice-text">
+            <strong>Quiero comprar o cotizar</strong>
+            <small>
+              Consulta precios, disponibilidad, envía tu receta
+              y coordina recojo o delivery.
+            </small>
+          </div>
+
+          <span class="contact-choice-arrow">›</span>
+
         </a>
+
+
+        <!-- CONSULTA FARMACEUTICA -->
+        <a
+          href="https://wa.me/51990993247?text=Hola%2C%20tengo%20una%20consulta%20sobre%20mis%20medicamentos"
+          target="_blank"
+          rel="noopener"
+          class="contact-choice-card">
+
+          <span class="contact-choice-icon">💊</span>
+
+          <div class="contact-choice-text">
+            <strong>Tengo una consulta sobre mis medicamentos</strong>
+            <small>
+              Escríbenos si tienes dudas sobre uso, horarios,
+              conservación u otra orientación farmacéutica.
+            </small>
+          </div>
+
+          <span class="contact-choice-arrow">›</span>
+
+        </a>
+
+
+        <!-- MI BOTICA -->
+        <a
+          href="#locales"
+          class="contact-choice-card">
+
+          <span class="contact-choice-icon">📍</span>
+
+          <div class="contact-choice-text">
+            <strong>Quiero comunicarme con mi botica</strong>
+            <small>
+              Elige tu distrito y establecimiento para encontrar
+              su teléfono, WhatsApp, horario y ubicación.
+            </small>
+          </div>
+
+          <span class="contact-choice-arrow">›</span>
+
+        </a>
+
+
+        <!-- PERSONA -->
+        <a
+          href="https://wa.me/51990993247?text=Hola%2C%20prefiero%20hablar%20directamente%20con%20una%20persona"
+          target="_blank"
+          rel="noopener"
+          class="contact-choice-card contact-choice-human">
+
+          <span class="contact-choice-icon">👤</span>
+
+          <div class="contact-choice-text">
+            <strong>Prefiero hablar con una persona</strong>
+            <small>
+              No necesitas completar ningún proceso.
+              Escríbenos directamente y cuéntanos qué necesitas.
+            </small>
+          </div>
+
+          <span class="contact-choice-arrow">›</span>
+
+        </a>
+
       </div>
 
-      <div class="contact-card">
-        <div class="contact-icon">📍</div>
-        <h3>Encuentra una botica</h3>
-        <p>
-          Consulta nuestros establecimientos, direcciones, horarios y cómo
-          llegar.
-        </p>
-        <a href="#locales" class="contact-button contact-button-primary">
-          Ver locales
-        </a>
+
+      <!-- FORMA FACIL DE COMUNICARSE -->
+      <div class="contact-choice-easy">
+
+        <span class="contact-choice-easy-icon">🎤</span>
+
+        <div>
+          <strong>Comunícate como te resulte más fácil.</strong>
+
+          <p>
+            Puedes escribir, enviar una foto de tu receta
+            o tus medicamentos, o simplemente mandarnos un audio.
+          </p>
+        </div>
+
       </div>
 
-      <div class="contact-card">
-        <div class="contact-icon">💬</div>
-        <h3>Atención de tu local</h3>
-        <p>
-          Selecciona tu distrito y establecimiento para comunicarte por
-          WhatsApp o teléfono directamente con la botica.
-        </p>
-        <a href="#locales" class="contact-button contact-button-secondary">
-          Elegir establecimiento
-        </a>
+
+      <!-- CANALES -->
+      <div class="contact-choice-channels">
+
+        <div>
+          <span>COMPRAS, COTIZACIONES Y DELIVERY</span>
+          <strong>WhatsApp 990 993 246</strong>
+        </div>
+
+        <div>
+          <span>ORIENTACIÓN Y ACOMPAÑAMIENTO</span>
+          <strong>WhatsApp 990 993 247</strong>
+        </div>
+
       </div>
 
-    </div>
 
-    <div class="contact-note">
-      <strong>BOTICAS DEL DR JUAN</strong>
-      <span>Tu salud, cerca de ti.</span>
+      <!-- MENSAJE FINAL -->
+      <div class="contact-choice-promise">
+
+        <strong>BOTICAS DEL DR JUAN</strong>
+        <span>Tu salud, cerca de ti.</span>
+
+      </div>
+
     </div>
 
   </div>
