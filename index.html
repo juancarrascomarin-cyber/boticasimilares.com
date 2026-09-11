@@ -866,9 +866,16 @@
     @media (max-width: 800px) {
 
         header {
-    position: static;
-    top: auto;
-  }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.28s ease;
+  will-change: transform;
+}
+
+header.mobile-header-hidden {
+  transform: translateY(-100%);
+}
       
       .menu {
   display: flex;
@@ -3963,6 +3970,61 @@ locations.forEach(location => {
     }
   });
 });
+
+// ENCABEZADO INTELIGENTE EN CELULAR
+const mobileHeader = document.querySelector('header');
+
+let lastHeaderScroll = window.scrollY;
+let headerTicking = false;
+
+function actualizarEncabezadoMovil() {
+  const actual = window.scrollY;
+
+  if (window.innerWidth <= 800) {
+
+    // Cerca del inicio siempre queda visible
+    if (actual <= 40) {
+      mobileHeader.classList.remove('mobile-header-hidden');
+      lastHeaderScroll = actual;
+      headerTicking = false;
+      return;
+    }
+
+    const movimiento = actual - lastHeaderScroll;
+
+    // Si baja, ocultar
+    if (movimiento > 6) {
+      mobileHeader.classList.add('mobile-header-hidden');
+      lastHeaderScroll = actual;
+    }
+
+    // Si sube un poco, mostrar
+    else if (movimiento < -6) {
+      mobileHeader.classList.remove('mobile-header-hidden');
+      lastHeaderScroll = actual;
+    }
+  } else {
+    mobileHeader.classList.remove('mobile-header-hidden');
+    lastHeaderScroll = actual;
+  }
+
+  headerTicking = false;
+}
+
+window.addEventListener('scroll', function () {
+  if (!headerTicking) {
+    window.requestAnimationFrame(actualizarEncabezadoMovil);
+    headerTicking = true;
+  }
+});
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth > 800) {
+    mobileHeader.classList.remove('mobile-header-hidden');
+  }
+
+  lastHeaderScroll = window.scrollY;
+});  
   
 </script>
   
