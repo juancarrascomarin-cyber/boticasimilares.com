@@ -623,8 +623,45 @@
 }
 
 @media (max-width: 800px) {
-  .district-locations {
-    grid-template-columns: 1fr;
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .menu li {
+    margin: 0;
+  }
+
+  .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 8px 12px;
+
+    background: #fffaf6;
+    border: 1px solid #ead7cd;
+    border-radius: 9px;
+
+    color: #651709;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .menu a:hover {
+    background: #fff0e7;
   }
 
   .district-name {
@@ -820,8 +857,8 @@
 
     @media (max-width: 800px) {
       .menu {
-        display: none;
-      }
+  display: flex;
+}
 
       .hero {
         min-height: 500px;
