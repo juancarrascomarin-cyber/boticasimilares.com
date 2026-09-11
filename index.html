@@ -1626,6 +1626,274 @@
     min-height: 58px;
   }
 }
+
+/* BOTICAS DEL DR JUAN TE ACOMPAÑA */
+
+.acompana {
+  padding: 75px 0;
+  background: #fff7f1;
+  color: #332722;
+}
+
+.acompana .container {
+  max-width: 1050px;
+}
+
+
+/* CABECERA */
+
+.acompana-heading {
+  max-width: 800px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.acompana-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+
+  color: #c93409;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.acompana-heading h2 {
+  margin: 0 0 14px;
+
+  color: #651709;
+  font-size: clamp(34px, 4vw, 46px);
+  line-height: 1.15;
+}
+
+.acompana-heading p {
+  max-width: 720px;
+  margin: 0 auto;
+
+  color: #4d403b;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+
+/* OPCIONES */
+
+.acompana-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.acompana-card {
+  min-height: 135px;
+  padding: 22px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+
+  background: white;
+  border: 2px solid #ead7cd;
+  border-radius: 17px;
+
+  color: #332722;
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.acompana-card:hover {
+  border-color: #d83a0b;
+  background: #fff2e9;
+  transform: translateY(-2px);
+}
+
+.acompana-icon {
+  font-size: 38px;
+  line-height: 1;
+}
+
+.acompana-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.acompana-card strong {
+  color: #651709;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.acompana-card small {
+  color: #51443f;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.acompana-arrow {
+  color: #d83a0b;
+  font-size: 34px;
+  font-weight: 800;
+}
+
+
+/* OPCION PRINCIPAL */
+
+.acompana-card-featured {
+  background: #fff0e6;
+  border-color: #d83a0b;
+}
+
+
+/* HABLAR CON UNA PERSONA */
+
+.acompana-human {
+  background: #701b0b;
+  border-color: #701b0b;
+}
+
+.acompana-human strong,
+.acompana-human small,
+.acompana-human .acompana-arrow {
+  color: white;
+}
+
+.acompana-human:hover {
+  background: #5d1407;
+  border-color: #5d1407;
+}
+
+
+/* AUDIO, FOTO O TEXTO */
+
+.acompana-easy {
+  margin-top: 26px;
+  padding: 24px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+
+  background: white;
+  border: 1px solid #ead7cd;
+  border-radius: 17px;
+}
+
+.acompana-easy-icon {
+  font-size: 40px;
+}
+
+.acompana-easy strong {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #651709;
+  font-size: 20px;
+}
+
+.acompana-easy p {
+  margin: 0;
+
+  color: #4d403b;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+
+/* SEGURIDAD */
+
+.acompana-safety {
+  margin-top: 16px;
+  padding: 18px 22px;
+
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+
+  background: #fff0e7;
+  border-left: 4px solid #d83a0b;
+  border-radius: 0 12px 12px 0;
+
+  color: #4d403b;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.acompana-safety strong {
+  color: #651709;
+}
+
+
+/* TABLET */
+
+@media (max-width: 850px) {
+
+  .acompana-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+  .acompana {
+    padding: 55px 0;
+  }
+
+  .acompana-heading {
+    text-align: left;
+  }
+
+  .acompana-heading h2 {
+    font-size: 34px;
+  }
+
+  .acompana-heading p {
+    font-size: 17px;
+  }
+
+  .acompana-card {
+    min-height: 120px;
+    padding: 19px;
+  }
+
+  .acompana-card strong {
+    font-size: 19px;
+  }
+
+  .acompana-card small {
+    font-size: 16px;
+  }
+
+  .acompana-icon {
+    font-size: 34px;
+  }
+
+  .acompana-easy {
+    grid-template-columns: 1fr;
+    padding: 21px;
+  }
+
+  .acompana-easy strong {
+    font-size: 19px;
+  }
+
+  .acompana-safety {
+    display: block;
+    padding: 18px;
+  }
+
+  .acompana-safety strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
     
 /* ACCESIBILIDAD - CLIENTES MAYORES DE 50 AÑOS */
 
@@ -1993,13 +2261,11 @@ summary:focus-visible {
 
   </div>
 
-  <a
-    href="https://wa.me/51990993247?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Dr.%20Juan%20Te%20Acompa%C3%B1a%20para%20mis%20medicamentos%20de%20cada%20mes"
-    target="_blank"
-    rel="noopener"
-    class="hero-treatment-button">
-    Quiero que me acompañen
-  </a>
+ <a
+  href="#acompana"
+  class="hero-treatment-button">
+  Quiero que me acompañen
+</a>
 
 </div>
 
@@ -2176,7 +2442,190 @@ summary:focus-visible {
   </div>
 </section>
 
+<section class="acompana" id="acompana">
+  <div class="container">
 
+    <div class="acompana-heading">
+
+      <span class="acompana-eyebrow">
+        BOTICAS DEL DR JUAN TE ACOMPAÑA
+      </span>
+
+      <h2>¿Cómo podemos acompañarte?</h2>
+
+      <p>
+        Puedes escribirnos, enviarnos una foto o mandarnos un audio.
+        Elige la opción que mejor se parezca a lo que necesitas.
+      </p>
+
+    </div>
+
+
+    <div class="acompana-grid">
+
+      <!-- PARA MI -->
+      <a
+        href="https://wa.me/51990993247?text=Hola%2C%20los%20medicamentos%20son%20para%20m%C3%AD%20y%20quiero%20informaci%C3%B3n%20sobre%20BOTICAS%20DEL%20DR%20JUAN%20TE%20ACOMPA%C3%91A"
+        target="_blank"
+        rel="noopener"
+        class="acompana-card">
+
+        <span class="acompana-icon">❤️</span>
+
+        <div>
+          <strong>Los medicamentos son para mí</strong>
+          <small>
+            Te ayudamos a organizar tus medicamentos habituales
+            y tus próximas compras.
+          </small>
+        </div>
+
+        <span class="acompana-arrow">›</span>
+
+      </a>
+
+
+      <!-- PARA UN FAMILIAR -->
+      <a
+        href="https://wa.me/51990993247?text=Hola%2C%20estoy%20ayudando%20a%20un%20familiar%20con%20sus%20medicamentos%20y%20quiero%20informaci%C3%B3n%20sobre%20BOTICAS%20DEL%20DR%20JUAN%20TE%20ACOMPA%C3%91A"
+        target="_blank"
+        rel="noopener"
+        class="acompana-card">
+
+        <span class="acompana-icon">👨‍👩‍👧</span>
+
+        <div>
+          <strong>Estoy ayudando a un familiar</strong>
+          <small>
+            Puedes ayudarnos a organizar los medicamentos
+            de mamá, papá o de la persona que acompañas.
+          </small>
+        </div>
+
+        <span class="acompana-arrow">›</span>
+
+      </a>
+
+
+      <!-- MEDICAMENTOS DE CADA MES -->
+      <a
+        href="https://wa.me/51990993247?text=Hola%2C%20tomo%20medicamentos%20todos%20los%20meses%20y%20quiero%20organizar%20mi%20pr%C3%B3xima%20compra"
+        target="_blank"
+        rel="noopener"
+        class="acompana-card acompana-card-featured">
+
+        <span class="acompana-icon">📅</span>
+
+        <div>
+          <strong>Tomo medicamentos todos los meses</strong>
+          <small>
+            Te ayudamos a preparar y organizar tu próxima compra.
+          </small>
+        </div>
+
+        <span class="acompana-arrow">›</span>
+
+      </a>
+
+
+      <!-- DUDAS -->
+      <a
+        href="https://wa.me/51990993247?text=Hola%2C%20tengo%20una%20duda%20sobre%20mis%20medicamentos"
+        target="_blank"
+        rel="noopener"
+        class="acompana-card">
+
+        <span class="acompana-icon">💊</span>
+
+        <div>
+          <strong>Tengo una duda sobre mis medicamentos</strong>
+          <small>
+            Consulta sobre uso, horarios, conservación
+            y otras dudas farmacéuticas.
+          </small>
+        </div>
+
+        <span class="acompana-arrow">›</span>
+
+      </a>
+
+
+      <!-- MEDICAMENTOS EN CASA -->
+      <a
+        href="https://wa.me/51990993247?text=Hola%2C%20quiero%20revisar%20los%20medicamentos%20que%20tengo%20guardados%20en%20casa"
+        target="_blank"
+        rel="noopener"
+        class="acompana-card">
+
+        <span class="acompana-icon">🏠</span>
+
+        <div>
+          <strong>Quiero revisar mis medicamentos de casa</strong>
+          <small>
+            Podemos orientarte sobre vencimiento, conservación,
+            identificación y organización.
+          </small>
+        </div>
+
+        <span class="acompana-arrow">›</span>
+
+      </a>
+
+
+      <!-- PERSONA -->
+      <a
+        href="https://wa.me/51990993247?text=Hola%2C%20prefiero%20hablar%20directamente%20con%20una%20persona"
+        target="_blank"
+        rel="noopener"
+        class="acompana-card acompana-human">
+
+        <span class="acompana-icon">👤</span>
+
+        <div>
+          <strong>Prefiero hablar con una persona</strong>
+          <small>
+            No necesitas seguir ningún proceso.
+            Escríbenos y te atenderemos directamente.
+          </small>
+        </div>
+
+        <span class="acompana-arrow">›</span>
+
+      </a>
+
+    </div>
+
+
+    <div class="acompana-easy">
+
+      <div class="acompana-easy-icon">🎤</div>
+
+      <div>
+        <strong>No tienes que escribir si no quieres.</strong>
+
+        <p>
+          También puedes mandar una foto de tu receta,
+          una foto de tus medicamentos o simplemente enviarnos un audio.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="acompana-safety">
+
+      <strong>Tu seguridad es primero.</strong>
+
+      <span>
+        Si una receta o indicación no puede identificarse con seguridad,
+        nunca se interpretará por aproximación y será necesario revisarla.
+      </span>
+
+    </div>
+
+  </div>
+</section>
+  
  <section class="about" id="nosotros">
   <div class="container">
 
