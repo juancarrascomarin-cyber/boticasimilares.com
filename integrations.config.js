@@ -31,6 +31,18 @@ window.BOTICAS_INTEGRATIONS = {
       "storeUrl"
     ]
   },
+  productExperience: {
+    enabled: false,
+    requireValidatedProductBeforeAssistant: true,
+    showOfficialSource: true,
+    showOfficialInfoUpdatedAt: true,
+    actions: {
+      askAssistant: false,
+      openStore: false,
+      askHuman: true
+    },
+    humanSupportWhatsApp: "https://wa.me/51990993247?text=Hola%2C%20necesito%20orientaci%C3%B3n%20sobre%20un%20producto"
+  },
   chatbot: {
     enabled: false,
     provider: "",
