@@ -1,0 +1,24 @@
+{
+  "sku": "",
+  "name": "",
+  "brand": "",
+  "activeIngredient": "",
+  "presentation": "",
+  "category": "otc",
+  "image": "",
+  "officialInfoSource": "",
+  "officialInfoUpdatedAt": "",
+  "storeUrl": "",
+  "information": {
+    "authorizedIndications": [],
+    "approvedUseInstructions": [],
+    "warnings": [],
+    "contraindications": [],
+    "storage": ""
+  },
+  "assistant": {
+    "enabled": false,
+    "requiresExactProductMatch": true,
+    "humanEscalationAvailable": true
+  }
+}
