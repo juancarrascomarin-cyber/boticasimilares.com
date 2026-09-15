@@ -4,7 +4,32 @@ window.BOTICAS_INTEGRATIONS = {
     url: "",
     openInNewTab: true,
     buttonLabel: "Comprar online",
-    description: "Consulta precios, disponibilidad y realiza tu compra en nuestra tienda online."
+    description: "Consulta precios, disponibilidad y realiza tu compra en nuestra tienda online.",
+    productRouteTemplate: "",
+    categoryRouteTemplate: "",
+    availabilityMode: "store-controlled"
+  },
+  catalog: {
+    enabled: false,
+    source: "",
+    currency: "PEN",
+    country: "PE",
+    productIdField: "sku",
+    allowPricesOnInstitutionalSite: false,
+    allowStockOnInstitutionalSite: false,
+    otcCategoryKey: "otc",
+    productFields: [
+      "sku",
+      "name",
+      "brand",
+      "activeIngredient",
+      "presentation",
+      "category",
+      "image",
+      "officialInfoSource",
+      "officialInfoUpdatedAt",
+      "storeUrl"
+    ]
   },
   chatbot: {
     enabled: false,
@@ -18,6 +43,8 @@ window.BOTICAS_INTEGRATIONS = {
     enabled: false,
     knowledgeMode: "official-sources-only",
     primarySource: "DIGEMID",
+    requireExactProductId: true,
+    showSourceAndUpdateDate: true,
     allowProductInformation: true,
     allowLabelIndications: true,
     allowApprovedWarnings: true,
