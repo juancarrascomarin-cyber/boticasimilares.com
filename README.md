@@ -18,8 +18,13 @@ Sitio institucional y de atención para BOTICAS DEL DR JUAN, nombre comercial de
 
 - `index.html`: sitio principal.
 - `404.html`: página de error amigable.
+- `privacidad.html`: información sencilla sobre privacidad y servicios externos.
 - `robots.txt`: directivas para buscadores.
 - `sitemap.xml`: mapa del sitio.
+- `logo-dr-juan.png`: archivo original de la marca.
+- `logo-dr-juan-web.webp`: versión optimizada para carga web.
+- `favicon.png`: icono del sitio.
+- `social-boticas-del-dr-juan.jpg`: imagen de vista previa para compartir la web.
 - `scripts/validate_site.py`: validación automatizada de contenido y datos esenciales.
 - `.github/workflows/validate-site.yml`: ejecuta la validación en GitHub Actions.
 
