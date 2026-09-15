@@ -1,0 +1,103 @@
+name: Optimizar sitio
+
+on:
+  push:
+    branches:
+      - chatgpt-mejora-integral-web
+    paths:
+      - '.github/workflows/optimize-and-polish.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+        with:
+          ref: chatgpt-mejora-integral-web
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar Pillow
+        run: python -m pip install --quiet pillow
+
+      - name: Optimizar logo y pulir HTML
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+
+          root = Path('.')
+          logo_path = root / 'logo-dr-juan.png'
+          index_path = root / 'index.html'
+          privacy_path = root / 'privacidad.html'
+          error_path = root / '404.html'
+
+          image = Image.open(logo_path).convert('RGBA')
+
+          web = image.copy()
+          web.thumbnail((720, 720), Image.Resampling.LANCZOS)
+          web.save(root / 'logo-dr-juan-web.webp', 'WEBP', lossless=True, method=6)
+          web_w, web_h = web.size
+
+          favicon = image.copy()
+          favicon.thumbnail((180, 180), Image.Resampling.LANCZOS)
+          fav_canvas = Image.new('RGBA', (192, 192), (255, 255, 255, 0))
+          fav_canvas.alpha_composite(favicon, ((192 - favicon.width)//2, (192 - favicon.height)//2))
+          fav_canvas.save(root / 'favicon.png', 'PNG', optimize=True)
+
+          social_bg = Image.new('RGB', (1200, 630), '#fffaf6')
+          social_logo = image.copy()
+          social_logo.thumbnail((900, 470), Image.Resampling.LANCZOS)
+          if social_logo.mode != 'RGBA':
+              social_logo = social_logo.convert('RGBA')
+          x = (1200 - social_logo.width) // 2
+          y = (630 - social_logo.height) // 2
+          social_bg.paste(social_logo, (x, y), social_logo)
+          social_bg.save(root / 'social-boticas-del-dr-juan.jpg', 'JPEG', quality=88, optimize=True, progressive=True)
+
+          text = index_path.read_text(encoding='utf-8')
+
+          anchor = '  <meta property="og:url" content="https://boticasimilares.com/">\n'
+          social_meta = '''  <meta property="og:url" content="https://boticasimilares.com/">\n  <meta property="og:image" content="https://boticasimilares.com/social-boticas-del-dr-juan.jpg">\n  <meta property="og:image:alt" content="BOTICAS DEL DR JUAN">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="BOTICAS DEL DR JUAN | Tu salud, cerca de ti">\n  <meta name="twitter:description" content="Cotiza tu receta, encuentra tu botica y recibe orientación de forma simple por WhatsApp, foto o audio.">\n  <meta name="twitter:image" content="https://boticasimilares.com/social-boticas-del-dr-juan.jpg">\n  <link rel="icon" href="favicon.png" type="image/png">\n  <link rel="apple-touch-icon" href="favicon.png">\n'''
+          if 'social-boticas-del-dr-juan.jpg' not in text:
+              text = text.replace(anchor, social_meta, 1)
+
+          header_img = '<img src="logo-dr-juan.png" alt="BOTICAS DEL DR JUAN">'
+          header_new = f'<img src="logo-dr-juan-web.webp" alt="BOTICAS DEL DR JUAN" width="{web_w}" height="{web_h}" decoding="async" fetchpriority="high">'
+          text = text.replace(header_img, header_new, 1)
+
+          about_img = '<img class="about-logo" src="logo-dr-juan.png" alt="BOTICAS DEL DR JUAN">'
+          about_new = f'<img class="about-logo" src="logo-dr-juan-web.webp" alt="BOTICAS DEL DR JUAN" width="{web_w}" height="{web_h}" loading="lazy" decoding="async">'
+          text = text.replace(about_img, about_new, 1)
+
+          footer_style = '''    footer strong {\n      color: #fff;\n    }'''
+          footer_style_new = '''    footer strong {\n      color: #fff;\n    }\n\n    footer a {\n      color: #fff;\n      font-weight: 800;\n      text-underline-offset: 3px;\n    }'''
+          if 'footer a {' not in text:
+              text = text.replace(footer_style, footer_style_new, 1)
+
+          footer_old = '<span>© <span id="year">2026</span> · Todos los derechos reservados</span>'
+          footer_new = '<span>© <span id="year">2026</span> · Todos los derechos reservados · <a href="privacidad.html">Privacidad</a></span>'
+          text = text.replace(footer_old, footer_new, 1)
+
+          index_path.write_text(text, encoding='utf-8')
+
+          for page in (privacy_path, error_path):
+              p = page.read_text(encoding='utf-8')
+              p = p.replace('href="/"', 'href="index.html"')
+              page.write_text(p, encoding='utf-8')
+          PY
+
+      - name: Guardar optimizaciones
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html privacidad.html 404.html logo-dr-juan-web.webp favicon.png social-boticas-del-dr-juan.jpg
+          git commit -m "Optimizar assets y metadatos del sitio"
+          git push origin HEAD:chatgpt-mejora-integral-web
