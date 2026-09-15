@@ -27,6 +27,10 @@ Se han reservado campos para Meta Pixel, TikTok Pixel y Google Tag. Permanecen d
 
 Nunca deben almacenarse contraseñas, tokens, secretos de API ni credenciales de redes sociales en este archivo público.
 
+## Estado de la muestra
+
+La muestra deja preparada esta capa de integración, pero no muestra perfiles, tiendas sociales ni rastreadores hasta disponer de datos oficiales verificados. Esto permite evaluar la web institucional sin botones vacíos ni funciones ficticias.
+
 ## Principio de experiencia
 
 Las redes sociales deben llevar al usuario a una acción sencilla: conocer BOTICAS DEL DR JUAN, encontrar una botica, conversar por WhatsApp, recibir acompañamiento o acceder a la tienda. La navegación no debe depender de que el cliente tenga una cuenta en una red social.
