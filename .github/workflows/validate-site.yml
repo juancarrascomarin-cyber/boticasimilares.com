@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - chatgpt-mejora-integral-web
+      - post-lanzamiento-integraciones
   pull_request:
     branches:
       - main
@@ -25,3 +26,7 @@ jobs:
 
       - name: Validar HTML, enlaces y datos esenciales
         run: python scripts/validate_site.py
+
+      - name: Validar arquitectura del catálogo OTC
+        if: hashFiles('scripts/validate_otc_catalog.py') != ''
+        run: python scripts/validate_otc_catalog.py
