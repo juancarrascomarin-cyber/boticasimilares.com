@@ -18,6 +18,8 @@ window.BOTICAS_INTEGRATIONS = {
     allowPricesOnInstitutionalSite: false,
     allowStockOnInstitutionalSite: false,
     otcCategoryKey: "otc",
+    requireApprovedProductBeforePublication: true,
+    requireVerifiedSourceBeforeApproval: true,
     productFields: [
       "sku",
       "name",
@@ -26,14 +28,16 @@ window.BOTICAS_INTEGRATIONS = {
       "presentation",
       "category",
       "image",
-      "officialInfoSource",
-      "officialInfoUpdatedAt",
-      "storeUrl"
+      "officialInfo",
+      "validation",
+      "publication",
+      "commerce"
     ]
   },
   productExperience: {
     enabled: false,
     requireValidatedProductBeforeAssistant: true,
+    requireApprovedProductBeforeVisibility: true,
     showOfficialSource: true,
     showOfficialInfoUpdatedAt: true,
     actions: {
@@ -56,6 +60,8 @@ window.BOTICAS_INTEGRATIONS = {
     knowledgeMode: "official-sources-only",
     primarySource: "DIGEMID",
     requireExactProductId: true,
+    requireApprovedProduct: true,
+    requireVerifiedSource: true,
     showSourceAndUpdateDate: true,
     allowProductInformation: true,
     allowLabelIndications: true,
