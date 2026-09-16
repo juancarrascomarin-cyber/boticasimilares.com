@@ -37,7 +37,8 @@ else:
 
     required_top = [
         "sku", "name", "brand", "activeIngredient", "presentation",
-        "category", "officialInfo", "commerce", "assistant"
+        "category", "officialInfo", "validation", "publication",
+        "commerce", "assistant"
     ]
     for field in required_top:
         if field not in product:
@@ -59,6 +60,42 @@ else:
     source_url = official.get("sourceUrl", "").strip()
     if source_url and not is_https(source_url):
         fail("officialInfo.sourceUrl debe usar HTTPS")
+
+    validation = product.get("validation", {})
+    allowed_statuses = {"draft", "review", "approved", "rejected"}
+    if validation.get("status") not in allowed_statuses:
+        fail("validation.status debe ser draft, review, approved o rejected")
+
+    source_verified = validation.get("sourceVerified") is True
+    content_verified = validation.get("contentVerified") is True
+    if validation.get("status") == "approved":
+        if not source_verified or not content_verified:
+            fail("Un producto aprobado requiere fuente y contenido verificados")
+        if not validation.get("reviewedBy", "").strip():
+            fail("Un producto aprobado requiere reviewedBy")
+        if not validation.get("reviewedAt", "").strip():
+            fail("Un producto aprobado requiere reviewedAt")
+        if not official.get("sourceUrl", "").strip():
+            fail("Un producto aprobado requiere URL de fuente oficial")
+        if not official.get("registrationId", "").strip():
+            fail("Un producto aprobado requiere registro/identificador regulatorio")
+        if not official.get("updatedAt", "").strip():
+            fail("Un producto aprobado requiere fecha de actualización oficial")
+
+    publication = product.get("publication", {})
+    for field in ("visible", "assistantAvailable", "storeLinkAvailable"):
+        if field not in publication or not isinstance(publication.get(field), bool):
+            fail(f"publication.{field} debe existir y ser booleano")
+
+    if publication.get("visible") and validation.get("status") != "approved":
+        fail("Un producto visible debe estar aprobado")
+    if publication.get("assistantAvailable"):
+        if validation.get("status") != "approved":
+            fail("El asistente solo puede estar disponible para productos aprobados")
+        if not source_verified or not content_verified:
+            fail("El asistente requiere fuente y contenido verificados")
+    if publication.get("storeLinkAvailable") and not product.get("commerce", {}).get("storeUrl", "").strip():
+        fail("storeLinkAvailable requiere commerce.storeUrl")
 
     commerce = product.get("commerce", {})
     if commerce.get("priceManagedByStore") is not True:
