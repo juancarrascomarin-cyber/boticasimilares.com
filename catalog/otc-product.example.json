@@ -1,0 +1,43 @@
+{
+  "sku": "EJEMPLO-OTC-001",
+  "name": "Producto OTC de ejemplo",
+  "brand": "Marca de ejemplo",
+  "activeIngredient": "Principio activo",
+  "presentation": "Presentación autorizada",
+  "category": "otc",
+  "image": "",
+  "officialInfo": {
+    "sourceName": "DIGEMID / información autorizada del producto",
+    "sourceUrl": "",
+    "registrationId": "",
+    "updatedAt": "",
+    "indications": [],
+    "warnings": [],
+    "contraindications": [],
+    "approvedUseInstructions": [],
+    "storage": ""
+  },
+  "validation": {
+    "status": "draft",
+    "reviewedBy": "",
+    "reviewedAt": "",
+    "sourceVerified": false,
+    "contentVerified": false
+  },
+  "publication": {
+    "visible": false,
+    "assistantAvailable": false,
+    "storeLinkAvailable": false
+  },
+  "commerce": {
+    "storeUrl": "",
+    "priceManagedByStore": true,
+    "stockManagedByStore": true
+  },
+  "assistant": {
+    "enabled": false,
+    "requireExactProductId": true,
+    "allowOnlyOfficialInfo": true,
+    "humanEscalationAvailable": true
+  }
+}

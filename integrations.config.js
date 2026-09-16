@@ -4,7 +4,48 @@ window.BOTICAS_INTEGRATIONS = {
     url: "",
     openInNewTab: true,
     buttonLabel: "Comprar online",
-    description: "Consulta precios, disponibilidad y realiza tu compra en nuestra tienda online."
+    description: "Consulta precios, disponibilidad y realiza tu compra en nuestra tienda online.",
+    productRouteTemplate: "",
+    categoryRouteTemplate: "",
+    availabilityMode: "store-controlled"
+  },
+  catalog: {
+    enabled: false,
+    source: "",
+    currency: "PEN",
+    country: "PE",
+    productIdField: "sku",
+    allowPricesOnInstitutionalSite: false,
+    allowStockOnInstitutionalSite: false,
+    otcCategoryKey: "otc",
+    requireApprovedProductBeforePublication: true,
+    requireVerifiedSourceBeforeApproval: true,
+    productFields: [
+      "sku",
+      "name",
+      "brand",
+      "activeIngredient",
+      "presentation",
+      "category",
+      "image",
+      "officialInfo",
+      "validation",
+      "publication",
+      "commerce"
+    ]
+  },
+  productExperience: {
+    enabled: false,
+    requireValidatedProductBeforeAssistant: true,
+    requireApprovedProductBeforeVisibility: true,
+    showOfficialSource: true,
+    showOfficialInfoUpdatedAt: true,
+    actions: {
+      askAssistant: false,
+      openStore: false,
+      askHuman: true
+    },
+    humanSupportWhatsApp: "https://wa.me/51990993247?text=Hola%2C%20necesito%20orientaci%C3%B3n%20sobre%20un%20producto"
   },
   chatbot: {
     enabled: false,
@@ -18,6 +59,10 @@ window.BOTICAS_INTEGRATIONS = {
     enabled: false,
     knowledgeMode: "official-sources-only",
     primarySource: "DIGEMID",
+    requireExactProductId: true,
+    requireApprovedProduct: true,
+    requireVerifiedSource: true,
+    showSourceAndUpdateDate: true,
     allowProductInformation: true,
     allowLabelIndications: true,
     allowApprovedWarnings: true,
