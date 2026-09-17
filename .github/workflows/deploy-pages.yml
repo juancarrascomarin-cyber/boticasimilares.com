@@ -25,6 +25,14 @@ jobs:
       - name: Descargar sitio
         uses: actions/checkout@v4
 
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validar sitio antes de publicar
+        run: python scripts/validate_site.py
+
       - name: Configurar Pages
         uses: actions/configure-pages@v5
 
