@@ -5,6 +5,8 @@ on:
     branches:
       - chatgpt-mejora-integral-web
       - post-lanzamiento-integraciones
+      - etapa-3-experiencia-seo
+      - etapa-3-cierre
   pull_request:
     branches:
       - main
