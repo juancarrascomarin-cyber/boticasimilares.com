@@ -3,6 +3,8 @@ name: Validar sitio
 on:
   push:
     branches:
+      - main
+      - auditoria-final-institucional
       - chatgpt-mejora-integral-web
       - post-lanzamiento-integraciones
       - etapa-3-experiencia-seo
