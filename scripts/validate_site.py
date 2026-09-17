@@ -31,6 +31,9 @@ class SiteParser(HTMLParser):
         self.title_depth = 0
         self.title_text = []
         self.meta = []
+        self.html_lang = ""
+        self.main_count = 0
+        self.h1_count = 0
 
     @staticmethod
     def attrs_dict(attrs):
@@ -38,6 +41,8 @@ class SiteParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         data = self.attrs_dict(attrs)
+        if tag == "html":
+            self.html_lang = data.get("lang", "")
         if data.get("id"):
             self.ids.append(data["id"])
         if tag == "a":
@@ -46,6 +51,10 @@ class SiteParser(HTMLParser):
             self.images.append(data)
         elif tag == "meta":
             self.meta.append(data)
+        elif tag == "main":
+            self.main_count += 1
+        elif tag == "h1":
+            self.h1_count += 1
         elif tag == "details":
             classes = set(data.get("class", "").split())
             if "district" in classes:
@@ -71,7 +80,11 @@ else:
     parser = SiteParser()
     parser.feed(text)
 
-    required_files = ["logo-dr-juan.png", "robots.txt", "sitemap.xml"]
+    required_files = [
+        "logo-dr-juan.png", "logo-dr-juan-web.webp", "favicon.png",
+        "robots.txt", "sitemap.xml", "privacidad.html",
+        "DOMAIN_CUTOVER_CHECKLIST.md", "ETAPA_3.md"
+    ]
     for filename in required_files:
         if not (ROOT / filename).exists():
             fail(f"Falta {filename}")
@@ -84,6 +97,13 @@ else:
     duplicates = sorted({item for item in parser.ids if parser.ids.count(item) > 1})
     if duplicates:
         fail("Hay IDs duplicados: " + ", ".join(duplicates))
+
+    if parser.html_lang.lower() != "es":
+        fail("El documento debe declarar lang='es'")
+    if parser.main_count != 1:
+        fail(f"Se esperaba un único elemento main y se encontraron {parser.main_count}")
+    if parser.h1_count != 1:
+        fail(f"Se esperaba un único H1 y se encontraron {parser.h1_count}")
 
     if parser.districts != 7:
         fail(f"Se esperaban 7 distritos y se encontraron {parser.districts}")
@@ -98,9 +118,15 @@ else:
     if not descriptions or len(descriptions[0].strip()) < 50:
         fail("Falta una meta descripción útil")
 
+    viewports = [m.get("content", "") for m in parser.meta if m.get("name", "").lower() == "viewport"]
+    if not viewports or "width=device-width" not in viewports[0]:
+        fail("Falta viewport responsive")
+
     for image in parser.images:
         if not image.get("alt", "").strip():
             fail(f"Imagen sin texto alternativo: {image.get('src', '(sin src)')}")
+        if not image.get("width") or not image.get("height"):
+            warn(f"Imagen sin dimensiones explícitas: {image.get('src', '(sin src)')}")
 
     for link in parser.links:
         href = link.get("href", "").strip()
@@ -118,15 +144,25 @@ else:
             if scheme != "https":
                 fail(f"Enlace externo no HTTPS: {href}")
 
+    required_fragments = [
+        'class="skip-link"',
+        ':focus-visible',
+        'prefers-reduced-motion',
+        'aria-label="Navegación principal"',
+        'rel="canonical"',
+        'application/ld+json',
+        'privacidad.html'
+    ]
+    for fragment in required_fragments:
+        if fragment not in text:
+            fail(f"Falta control de experiencia/accesibilidad: {fragment}")
+
     if "color: ;" in text:
         fail("Se encontró una propiedad CSS vacía: color: ;")
-
     if "BOTICAS DEL DR. JUAN" in text:
         fail("Se encontró la marca con punto: BOTICAS DEL DR. JUAN")
-
     if "IDEAFAB S.A." not in text or "20606338806" not in text:
         fail("Faltan razón social o RUC en el contenido")
-
     if "51990993246" not in text:
         fail("Falta el WhatsApp de compras/cotizaciones/delivery")
     if "51990993247" not in text:
