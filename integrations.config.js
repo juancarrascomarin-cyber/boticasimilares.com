@@ -1,7 +1,9 @@
 window.BOTICAS_INTEGRATIONS = {
   store: {
     enabled: false,
-    url: "",
+    url: "https://boticasdeldrjuan.com/",
+    institutionalUrl: "https://boticasimilares.com/",
+    launchStatus: "prelaunch",
     openInNewTab: true,
     buttonLabel: "Comprar online",
     description: "Consulta precios, disponibilidad y realiza tu compra en nuestra tienda online.",
