@@ -1,0 +1,175 @@
+name: Preparar botones sociales
+on:
+  push:
+    branches: [social-links-20260918]
+    paths: ['.github/workflows/prepare-social-links.yml']
+permissions:
+  contents: write
+concurrency:
+  group: prepare-social-links
+  cancel-in-progress: false
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/social-links-20260918'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: social-links-20260918
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Incorporar bloque sin modificar el contenido existente
+        run: |
+          python - <<'PY'
+          import hashlib, os, re
+          from pathlib import Path
+          root = Path('.')
+          page = root / 'index.html'
+          original_bytes = page.read_bytes()
+          original = original_bytes.decode('utf-8')
+          repo = os.environ['GITHUB_REPOSITORY'].split('/')[-1]
+          expected = {'boticasimilares.com': 'e4e62060fab1333c3bc41d4245a62de22f46cb63', 'boticasdeldrjuan.com': 'd3d2a799f50ae77717e7412a226a24853ef39dfd'}
+          actual = hashlib.sha1(b'blob ' + str(len(original_bytes)).encode() + b'\0' + original_bytes).hexdigest()
+          assert actual == expected[repo], 'La pagina ha cambiado: revisar antes de continuar'
+          assert 'id="redes-sociales"' not in original
+          css = '''
+              /* Enlaces sociales: sin SDK, videos incrustados ni seguimiento. */
+              .social-links-panel{box-sizing:border-box;width:min(980px,92%);margin:28px auto 0;padding:30px 24px;background:#fff;border:1px solid #ead7cd;border-radius:18px;text-align:center}
+              .social-links-panel--store{width:100%;background:#fffaf6}
+              .social-links-panel h2{margin:0 0 10px;color:#651709;font-size:clamp(24px,4vw,30px);line-height:1.25;letter-spacing:normal}
+              .social-links-panel p{margin:0;color:#5f514b;font-size:17px;line-height:1.6}
+              .social-link-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:20px}
+              .social-link-button{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;min-width:180px;padding:12px 22px;border:2px solid transparent;border-radius:12px;font:700 18px/1.4 Arial,Helvetica,sans-serif;color:#fff;text-decoration:none}
+              .social-link-button--facebook{background:#0866c6}
+              .social-link-button--tiktok{background:#171717}
+              .social-link-button:hover{filter:brightness(.92);text-decoration:underline;text-underline-offset:4px}
+              .social-link-button:focus-visible{outline:3px solid #651709;outline-offset:4px}
+              .social-link-button svg{display:block;width:24px;height:24px;flex:0 0 24px;fill:currentColor}
+              .social-links-panel .social-links-note{margin-top:14px;font-size:15px}
+              @media(max-width:480px){.social-links-panel{padding:24px 18px}.social-link-buttons{flex-direction:column}.social-link-button{width:100%;min-width:0}}
+          '''
+          modifier = ' social-links-panel--store' if repo == 'boticasdeldrjuan.com' else ''
+          block = '''
+              <section class="social-links-panel%s" id="redes-sociales" aria-labelledby="redes-sociales-titulo">
+                <h2 id="redes-sociales-titulo">Síguenos en nuestras redes</h2>
+                <p>Conoce las novedades de BOTICAS DEL DR JUAN.</p>
+                <nav class="social-link-buttons" aria-label="Redes sociales de BOTICAS DEL DR JUAN">
+                  <a class="social-link-button social-link-button--facebook" href="https://www.facebook.com/boticasdeldrjuan" target="_blank" rel="noopener noreferrer" aria-label="Facebook de BOTICAS DEL DR JUAN (abre en otra pestaña)">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.5 22v-9h3l.5-3h-3.5V8c0-1 .3-1.5 1.6-1.5H17V3.8c-.7-.1-1.5-.3-2.5-.3-2.5 0-4 1.5-4 4.3V10H8v3h2.5v9z"/></svg>
+                    <span>Facebook</span>
+                  </a>
+                  <a class="social-link-button social-link-button--tiktok" href="https://www.tiktok.com/@boticasdeldrjuan" target="_blank" rel="noopener noreferrer" aria-label="TikTok de BOTICAS DEL DR JUAN (abre en otra pestaña)">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 2h3c.2 2.2 1.5 3.6 4 4v3c-1.6 0-3-.5-4-1.3V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/></svg>
+                    <span>TikTok</span>
+                  </a>
+                </nav>
+                <p class="social-links-note">Los enlaces se abren en otra pestaña.</p>
+              </section>
+          ''' % modifier
+          assert original.count('</style>') == 1
+          marker = '</main>' if repo == 'boticasimilares.com' else '<p class="small">'
+          assert original.count(marker) == 1
+          updated = original.replace('</style>', css + '</style>', 1).replace(marker, block + marker, 1)
+          assert updated.replace(css, '', 1).replace(block, '', 1) == original, 'Cambios no previstos'
+          assert updated.count('id="redes-sociales"') == 1
+          assert updated.count('<main') == original.count('<main')
+          assert re.findall(r'https://wa.me/[^"\s]+', updated) == re.findall(r'https://wa.me/[^"\s]+', original)
+          page.write_text(updated, encoding='utf-8')
+          config = root / 'integrations.config.js'
+          if repo == 'boticasimilares.com':
+              before = config.read_text(encoding='utf-8')
+              old = '  social: {\n    enabled: false,\n    facebook: "",\n    instagram: "",\n    tiktok: "",'
+              new = '  social: {\n    enabled: true,\n    facebook: "https://www.facebook.com/boticasdeldrjuan",\n    instagram: "",\n    tiktok: "https://www.tiktok.com/@boticasdeldrjuan",'
+              assert before.count(old) == 1
+              after = before.replace(old, new, 1)
+              assert after.replace(new, old, 1) == before
+              config.write_text(after, encoding='utf-8')
+          print('OK: bloque social agregado; contenido, contactos y otras integraciones conservados')
+          PY
+      - name: Ejecutar validaciones existentes
+        run: |
+          if [ -f scripts/validate_site.py ]; then python scripts/validate_site.py; fi
+          if [ -f scripts/validate_otc_catalog.py ]; then python scripts/validate_otc_catalog.py; fi
+          git diff --check
+      - name: Preparar navegador de pruebas
+        run: |
+          python -m pip install --quiet playwright
+          if ! command -v google-chrome >/dev/null && ! command -v chromium >/dev/null; then python -m playwright install --with-deps chromium; fi
+      - name: Verificar botones en escritorio y celular
+        run: |
+          python - <<'PY'
+          import json, os, shutil
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright
+          out = Path(os.environ['RUNNER_TEMP']) / 'social-checks'
+          out.mkdir(exist_ok=True)
+          results = []
+          def contrast(rgb):
+              values = [c / 255 for c in rgb]
+              values = [c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4 for c in values]
+              return 1.05 / (sum(c*w for c,w in zip(values,[.2126,.7152,.0722])) + .05)
+          assert contrast([8,102,198]) >= 4.5
+          assert contrast([23,23,23]) >= 4.5
+          with sync_playwright() as p:
+              executable = shutil.which('google-chrome') or shutil.which('chromium')
+              args = {'headless': True, 'args': ['--no-sandbox']}
+              if executable: args['executable_path'] = executable
+              browser = p.chromium.launch(**args)
+              for width, js in [(320,True),(390,True),(768,True),(1366,True),(390,False)]:
+                  context = browser.new_context(viewport={'width':width,'height':1000}, java_script_enabled=js)
+                  context.route('https://**/*', lambda route: route.fulfill(status=200,content_type='text/html',body='<p>Destino simulado solo para verificar apertura del enlace.</p>'))
+                  page = context.new_page()
+                  page.goto(Path('index.html').resolve().as_uri(), wait_until='domcontentloaded')
+                  panel = page.locator('#redes-sociales')
+                  panel.scroll_into_view_if_needed()
+                  assert panel.is_visible()
+                  assert panel.evaluate('(e)=>e.scrollWidth<=e.clientWidth+1')
+                  bounds = panel.bounding_box()
+                  assert bounds['x'] >= 0 and bounds['x'] + bounds['width'] <= width + 1
+                  links = panel.locator('a')
+                  assert links.count() == 2
+                  expected = [('Facebook','https://www.facebook.com/boticasdeldrjuan'),('TikTok','https://www.tiktok.com/@boticasdeldrjuan')]
+                  for i, (name, href) in enumerate(expected):
+                      link = links.nth(i)
+                      assert link.inner_text().strip() == name
+                      assert link.get_attribute('href') == href
+                      assert link.get_attribute('target') == '_blank'
+                      assert set(link.get_attribute('rel').split()) >= {'noopener','noreferrer'}
+                      box = link.bounding_box()
+                      assert box['height'] >= 54 and box['width'] >= 44
+                      link.focus()
+                      assert link.evaluate('(e)=>document.activeElement===e')
+                      assert link.evaluate('(e)=>getComputedStyle(e).outlineStyle') != 'none'
+                      with page.expect_popup() as pop:
+                          page.keyboard.press('Enter')
+                      target = pop.value
+                      target.wait_for_url(href, timeout=10000)
+                      target.close()
+                  panel.screenshot(path=str(out / ('redes-%s-js-%s.png' % (width,js))))
+                  results.append({'width':width,'javascript':js,'visible':True,'panel_no_overflow':True,'keyboard_popup_destinations':True})
+                  context.close()
+              browser.close()
+          summary = {'checks':results,'contrast_facebook':round(contrast([8,102,198]),2),'contrast_tiktok':round(contrast([23,23,23]),2),'external_profiles':'not verified; navigation destinations intercepted for tests','new_external_scripts':0}
+          (out / 'results.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+          print(json.dumps(summary,indent=2))
+          PY
+      - name: Conservar evidencias de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-checks
+          path: ${{ runner.temp }}/social-checks
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Guardar solo cambios de pagina en la rama de trabajo
+        run: |
+          rm .github/workflows/prepare-social-links.yml
+          git add index.html .github/workflows/prepare-social-links.yml
+          if [ -f integrations.config.js ]; then git add integrations.config.js; fi
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Agregar Facebook y TikTok con pruebas responsive y teclado'
+          git push origin HEAD:social-links-20260918
