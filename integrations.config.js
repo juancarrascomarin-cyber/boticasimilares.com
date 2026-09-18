@@ -79,10 +79,10 @@ window.BOTICAS_INTEGRATIONS = {
     fallbackWhatsApp: "https://wa.me/51990993247?text=Hola%2C%20quiero%20consultar%20sobre%20un%20producto%20de%20venta%20sin%20receta"
   },
   social: {
-    enabled: false,
-    facebook: "",
+    enabled: true,
+    facebook: "https://www.facebook.com/boticasdeldrjuan",
     instagram: "",
-    tiktok: "",
+    tiktok: "https://www.tiktok.com/@boticasdeldrjuan",
     youtube: "",
     linkedin: "",
     x: "",
