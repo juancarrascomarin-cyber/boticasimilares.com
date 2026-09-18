@@ -68,6 +68,8 @@ jobs:
                 <p class="social-links-note">Los enlaces se abren en otra pestaña.</p>
               </section>
           ''' % modifier
+          css = css.lstrip('\n')
+          block = block.lstrip('\n')
           assert original.count('</style>') == 1
           marker = '</main>' if repo == 'boticasimilares.com' else '<p class="small">'
           assert original.count(marker) == 1
