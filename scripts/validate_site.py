@@ -83,6 +83,7 @@ else:
     required_files = [
         "logo-dr-juan.png", "logo-dr-juan-web.webp", "favicon.png",
         "robots.txt", "sitemap.xml", "privacidad.html",
+        "adesy-connect.html", "privacidad-adesy-connect.html",
         "DOMAIN_CUTOVER_CHECKLIST.md", "ETAPA_3.md"
     ]
     for filename in required_files:
@@ -175,6 +176,44 @@ else:
     tel_links = re.findall(r'href="tel:\+51\d{9}"', text)
     if len(tel_links) != 18:
         warn(f"Hay {len(tel_links)} enlaces de llamada; se esperaban 18")
+
+    # Controles específicos de ADESY CONNECT / OAuth.
+    adesy_page = ROOT / "adesy-connect.html"
+    adesy_privacy = ROOT / "privacidad-adesy-connect.html"
+    sitemap = ROOT / "sitemap.xml"
+
+    if adesy_page.exists():
+        adesy_text = adesy_page.read_text(encoding="utf-8")
+        for fragment in [
+            "ADESY CONNECT",
+            "IDEAFAB S.A.",
+            "Google Drive",
+            "privacidad-adesy-connect.html",
+            "https://boticasimilares.com/adesy-connect.html",
+        ]:
+            if fragment not in adesy_text:
+                fail(f"ADESY CONNECT: falta contenido requerido: {fragment}")
+
+    if adesy_privacy.exists():
+        privacy_text = adesy_privacy.read_text(encoding="utf-8")
+        for fragment in [
+            "Política de Privacidad de ADESY CONNECT",
+            "IDEAFAB S.A.",
+            "https://www.googleapis.com/auth/drive.file",
+            "Uso Limitado",
+            "Google Drive",
+        ]:
+            if fragment not in privacy_text:
+                fail(f"Política ADESY CONNECT: falta contenido requerido: {fragment}")
+
+    if sitemap.exists():
+        sitemap_text = sitemap.read_text(encoding="utf-8")
+        for url in [
+            "https://boticasimilares.com/adesy-connect.html",
+            "https://boticasimilares.com/privacidad-adesy-connect.html",
+        ]:
+            if url not in sitemap_text:
+                fail(f"Sitemap: falta URL de ADESY CONNECT: {url}")
 
 print("VALIDACIÓN DEL SITIO")
 for message in warnings:
