@@ -19,6 +19,8 @@ Sitio institucional y de atención para BOTICAS DEL DR JUAN, nombre comercial de
 - `index.html`: sitio principal.
 - `404.html`: página de error amigable.
 - `privacidad.html`: información sencilla sobre privacidad y servicios externos.
+- `adesy-connect.html`: página pública de ADESY CONNECT usada como página principal de la aplicación OAuth.
+- `privacidad-adesy-connect.html`: política de privacidad específica de ADESY CONNECT y su acceso a Google Drive.
 - `robots.txt`: directivas para buscadores.
 - `sitemap.xml`: mapa del sitio.
 - `logo-dr-juan.png`: archivo original de la marca.
@@ -27,6 +29,16 @@ Sitio institucional y de atención para BOTICAS DEL DR JUAN, nombre comercial de
 - `social-boticas-del-dr-juan.jpg`: imagen de vista previa para compartir la web.
 - `scripts/validate_site.py`: validación automatizada de contenido y datos esenciales.
 - `.github/workflows/validate-site.yml`: ejecuta la validación en GitHub Actions.
+
+## ADESY CONNECT y OAuth
+
+La configuración pública de OAuth de ADESY CONNECT utiliza páginas alojadas en este mismo dominio:
+
+- Página principal: `https://boticasimilares.com/adesy-connect.html`
+- Política de privacidad: `https://boticasimilares.com/privacidad-adesy-connect.html`
+- Dominio autorizado: `boticasimilares.com`
+
+La política describe el uso del alcance limitado de Google Drive `drive.file`. No ampliar los permisos OAuth ni modificar esa descripción sin revisar previamente la arquitectura real de ADESY CONNECT.
 
 ## Validación
 
